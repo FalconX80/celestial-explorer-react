@@ -4,11 +4,25 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, Globe, Timer, Thermometer, Wind, Moon, Weight } from 'lucide-react';
+import { Planet } from '@/data/solarSystem';
+
+interface SunData {
+  id: string;
+  name: string;
+  radius: number;
+  color: string;
+  temperature: string;
+  mass: string;
+  age: string;
+  description: string;
+  facts: string[];
+  wikipediaUrl: string;
+}
 
 interface PlanetInfoCardProps {
   celestialBody: {
     type: 'planet' | 'sun';
-    data: any;
+    data: Planet | SunData;
   } | null;
   onClose: () => void;
 }
@@ -50,7 +64,7 @@ const PlanetInfoCard: React.FC<PlanetInfoCardProps> = ({ celestialBody, onClose 
             <p className="text-muted-foreground mt-2">{data.description}</p>
           </CardHeader>
 
-          <CardContent className="space-y-6">
+           <CardContent className="space-y-6">
             {isPlanet && (
               <>
                 {/* Quick Stats */}
@@ -59,28 +73,28 @@ const PlanetInfoCard: React.FC<PlanetInfoCardProps> = ({ celestialBody, onClose 
                     <Moon className="h-4 w-4 text-primary" />
                     <div>
                       <p className="text-xs text-muted-foreground">Moons</p>
-                      <p className="font-semibold">{data.moons}</p>
+                      <p className="font-semibold">{(data as Planet).moons}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 p-3 bg-muted/50 rounded-lg">
                     <Weight className="h-4 w-4 text-primary" />
                     <div>
                       <p className="text-xs text-muted-foreground">Gravity</p>
-                      <p className="font-semibold">{data.gravity} m/s²</p>
+                      <p className="font-semibold">{(data as Planet).gravity} m/s²</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 p-3 bg-muted/50 rounded-lg">
                     <Timer className="h-4 w-4 text-primary" />
                     <div>
                       <p className="text-xs text-muted-foreground">Day Length</p>
-                      <p className="font-semibold text-xs">{data.dayLength}</p>
+                      <p className="font-semibold text-xs">{(data as Planet).dayLength}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 p-3 bg-muted/50 rounded-lg">
                     <Globe className="h-4 w-4 text-primary" />
                     <div>
                       <p className="text-xs text-muted-foreground">Year Length</p>
-                      <p className="font-semibold text-xs">{data.yearLength}</p>
+                      <p className="font-semibold text-xs">{(data as Planet).yearLength}</p>
                     </div>
                   </div>
                 </div>
@@ -92,7 +106,7 @@ const PlanetInfoCard: React.FC<PlanetInfoCardProps> = ({ celestialBody, onClose 
                       <Thermometer className="h-4 w-4 text-primary" />
                       Temperature
                     </h4>
-                    <Badge variant="secondary">{data.temperature}</Badge>
+                    <Badge variant="secondary">{(data as Planet).temperature}</Badge>
                   </div>
 
                   <div>
@@ -100,7 +114,7 @@ const PlanetInfoCard: React.FC<PlanetInfoCardProps> = ({ celestialBody, onClose 
                       <Wind className="h-4 w-4 text-primary" />
                       Atmosphere
                     </h4>
-                    <Badge variant="secondary">{data.atmosphere}</Badge>
+                    <Badge variant="secondary">{(data as Planet).atmosphere}</Badge>
                   </div>
                 </div>
               </>
@@ -113,14 +127,14 @@ const PlanetInfoCard: React.FC<PlanetInfoCardProps> = ({ celestialBody, onClose 
                   <Thermometer className="h-4 w-4 text-solar" />
                   <div>
                     <p className="text-xs text-muted-foreground">Temperature</p>
-                    <p className="font-semibold text-solar">{data.temperature}</p>
+                    <p className="font-semibold text-solar">{(data as SunData).temperature}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 p-3 bg-solar/10 rounded-lg border border-solar/20">
                   <Weight className="h-4 w-4 text-solar" />
                   <div>
                     <p className="text-xs text-muted-foreground">Mass</p>
-                    <p className="font-semibold text-solar">{data.mass}</p>
+                    <p className="font-semibold text-solar">{(data as SunData).mass}</p>
                   </div>
                 </div>
               </div>
@@ -142,7 +156,13 @@ const PlanetInfoCard: React.FC<PlanetInfoCardProps> = ({ celestialBody, onClose 
             <Button 
               className="w-full cosmic-glow"
               onClick={() => {
-                window.open(data.wikipediaUrl, '_blank', 'noopener,noreferrer');
+                console.log('Button clicked for:', data.name);
+                console.log('Wikipedia URL:', data.wikipediaUrl);
+                if (data.wikipediaUrl) {
+                  window.open(data.wikipediaUrl, '_blank', 'noopener,noreferrer');
+                } else {
+                  console.error('No Wikipedia URL found for:', data.name);
+                }
               }}
             >
               Learn More About {data.name}
