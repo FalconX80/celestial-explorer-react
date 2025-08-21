@@ -142,8 +142,7 @@ const PlanetInfoCard: React.FC<PlanetInfoCardProps> = ({ celestialBody, onClose 
             <Button 
               className="w-full cosmic-glow"
               onClick={() => {
-                // Future: Link to detailed page
-                console.log('Learn more about', data.name);
+                window.open(data.wikipediaUrl, '_blank', 'noopener,noreferrer');
               }}
             >
               Learn More About {data.name}

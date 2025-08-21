@@ -14,6 +14,7 @@ export interface Planet {
   temperature: string;
   description: string;
   facts: string[];
+  wikipediaUrl: string;
 }
 
 export const solarSystemData: Planet[] = [
@@ -36,7 +37,8 @@ export const solarSystemData: Planet[] = [
       "No atmosphere to trap heat",
       "One day on Mercury lasts about 59 Earth days",
       "Surface temperatures can reach 427°C during the day"
-    ]
+    ],
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Mercury_(planet)"
   },
   {
     id: "venus",
@@ -57,7 +59,8 @@ export const solarSystemData: Planet[] = [
       "Thick, toxic atmosphere creates extreme greenhouse effect",
       "Rotates backwards compared to most planets",
       "Surface pressure is 90 times that of Earth"
-    ]
+    ],
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Venus"
   },
   {
     id: "earth",
@@ -78,7 +81,8 @@ export const solarSystemData: Planet[] = [
       "71% of surface covered by water",
       "Protected by magnetic field",
       "Has one natural satellite: the Moon"
-    ]
+    ],
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Earth"
   },
   {
     id: "mars",
@@ -99,7 +103,8 @@ export const solarSystemData: Planet[] = [
       "Home to Olympus Mons, the largest volcano in the solar system",
       "Has polar ice caps made of water and CO₂",
       "Two small moons: Phobos and Deimos"
-    ]
+    ],
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Mars"
   },
   {
     id: "jupiter",
@@ -120,7 +125,8 @@ export const solarSystemData: Planet[] = [
       "Great Red Spot is a storm larger than Earth",
       "Acts as a 'cosmic vacuum cleaner' protecting inner planets",
       "Has a faint ring system discovered in 1979"
-    ]
+    ],
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Jupiter"
   },
   {
     id: "saturn",
@@ -141,7 +147,8 @@ export const solarSystemData: Planet[] = [
       "Least dense planet - would float in water",
       "Has hexagonal storm at its north pole",
       "Titan, its largest moon, has a thick atmosphere"
-    ]
+    ],
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Saturn"
   },
   {
     id: "uranus",
@@ -162,7 +169,8 @@ export const solarSystemData: Planet[] = [
       "Coldest planetary atmosphere in the solar system",
       "Has faint rings discovered in 1977",
       "Magnetic field is tilted 59° from its axis"
-    ]
+    ],
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Uranus"
   },
   {
     id: "neptune",
@@ -183,7 +191,8 @@ export const solarSystemData: Planet[] = [
       "First planet discovered by mathematical prediction",
       "Has a dark storm called the Great Dark Spot",
       "Takes 165 Earth years to orbit the Sun once"
-    ]
+    ],
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Neptune"
   }
 ];
 
@@ -201,5 +210,6 @@ export const sunData = {
     "Core temperature reaches 15.7 million Kelvin",
     "Produces energy through nuclear fusion",
     "Light takes 8 minutes 20 seconds to reach Earth"
-  ]
+  ],
+  wikipediaUrl: "https://en.wikipedia.org/wiki/Sun"
 };
